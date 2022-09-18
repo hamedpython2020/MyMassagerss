@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8    ">
+    <title>{{ prof.user.username }}</title>
+</head>
+<body>
+    {% if prof.picture %}
+<img src="{{ prof.picture.url }}" alt="hamin" height="500" width="800">
+    {% endif %}
+<p>
+    {{ prof.user }}
+    </p>
+<p>
+    {{ prof.Phone_number }}
+    </p>
+<p>
+    {{ prof.get_gender_display }}
+</p>
+<p>
+    {{ prof.birth_date|date:'Y/N/D' }}
+</p>
+</body>
+</html>
