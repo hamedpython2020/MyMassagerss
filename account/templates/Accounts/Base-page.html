@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static "massage/css/bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "massage/css/font-awesome.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "massage/css/main.css" %}">
+</head>
+<body style="background-color: #282a31; color:white">
+        <nav class="navbar navbar-expand-md navbar-dark mb-3" style="background-color: #f8ce46">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                MyMassager
+{#                <img#}
+            <small class="blockquote-footer ">
+                {% block page-nav-name %} {% endblock %}
+            </small>
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">post list</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">profiles</a>
+                    </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">logout</a>
+                            </li>
+                            <li class="nav-item">
+                                {{ user.is_authenticat }}
+                            <div class="dropdown pr-5 ">
+                                <button class="dropdown-topple btn btn-primary" type="button" data-toggle="dropdown">
+                                    {% if user.get_full_name %}
+                                        {{ user.get_full_name }}
+                                    {% else %}
+                                        {{ user.username }}
+                                    {% endif %}
+
+                                </button>
+                                <div class="dropdown-menu">
+                                    <p class="dropdown-item">post number : {{ post_num }}
+                                        <i class="fas fa-coins text-primary"></i>
+                                    </p>
+                                     <hr/>
+                                    <a class="dropdown-item" href="{% url "account:myprofile" profile_id=user.profile.id %}">پروفایل
+                                        <i class="bi bi-person-workspace text-info"></i>
+                                    </a>
+                                    <a class="dropdown-item" href="{% url "massage:mypost" %}">my post
+                                        <i class=" fas fa-ticket-alt text-success"></i>
+                                    </a>
+                                    <a class="dropdown-item" href="{% url "massage:new_post" %}">create new post
+                                        <i class="bi bi-receipt-cutoff text-info"></i>
+                                    </a>
+                                </div>
+                            </div>
+                       </li>
+                    {% else %}
+                        <li class="nav-item pr-5">
+                            <a class="btn btn-outline-danger" href="{% url "account:login" %}">ورود
+                                <i class="bi bi-box-arrow-in-right"></i>
+                            </a>
+                            <a class="btn btn-outline-dark " href="{% url "account:signup" %}">ثبت نام
+                                <i class="bi bi-plus-square"></i>
+                            </a>
+                        </li>
+                        <form class="d-flex mx-2" role="search">
+                            <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                        </form>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    {% block main %}
+        nothing for show
+    {% endblock %}
+
+
+
+
+
+<script src="{% static "massage/js/main.js" %}"></script>
+<script src="{% static "massage/js/jquery-3.4.0.min.js" %}"></script>
+<script src="{% static "massage/js/bootstrap.bundle.js" %}"></script>
+<script src="{% static "massage/js/font-awesome.js" %}"></script>
+</body>
+</html>
