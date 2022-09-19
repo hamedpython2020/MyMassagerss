@@ -1,0 +1,15 @@
+
+body {
+    direction: rtl;
+    text-align: right;
+    font-size: 14px !important;
+    margin: 1rem;
+    background-color: #282a31;
+}
+
+Time{
+    text-align: center;
+    color: #006EFF;
+    font-size:16px !important;
+
+}
