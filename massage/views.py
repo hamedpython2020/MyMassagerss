@@ -88,8 +88,12 @@ def New_post(request):
 
 def Mypost(request):
     post = Post.objects.filter(prof=request.user.profile)
+    count = post.count()
+    post_k = count // 3
+    post_b = post % 3
     context = {
-        "post": post
+        "post": post,
+        "post_k": post_k+post_b
     }
     return render(request, "massage/mypost.html", context)
 ############################################
