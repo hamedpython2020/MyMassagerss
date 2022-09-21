@@ -42,7 +42,7 @@ def Post_view(request, post_id):
         context = {
             'post': post
         }
-        return render(request, 'massage/posts_view.html', context)
+        return render(request, 'massage/post.html', context)
 
 ############################################
 
