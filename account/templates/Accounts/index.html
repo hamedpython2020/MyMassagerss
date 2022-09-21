@@ -1,23 +1,53 @@
 {% extends "Accounts/Base-page.html" %}
+{% load static %}
 {% block title %}
     home
 {% endblock %}
-
-{% block page-nav-name %}
-    home
+{% block main-content %}
+        {% for post in posts %}
+    <section class="skrollable u-align-center u-clearfix u-lightbox u-palette-1-light-2 u-section-1" id="carousel_5411" data-href="{% url "massage:Post_view" post_id=post.id %}">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-46 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-container-style u-layout-cell u-left-cell u-radius-33 u-shape-round u-size-30 u-size-xs-60 u-white u-layout-cell-1" src="" data-animation-name="flipIn" data-animation-duration="1000" data-animation-direction="X">
+                <div class="u-container-layout u-container-layout-1">
+                  <a href="https://nicepage.com/templates" class="u-active-none u-btn u-button-style u-hover-none u-none u-text-hover-palette-2-base u-btn-1"><span class="u-file-icon u-icon u-icon-1"><img src="images/7.svg" alt=""></span>&nbsp; {{ post.prof.user.username }}
+                  </a><span class="u-border-2 u-border-palette-1-base u-icon u-icon-circle u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 60 60" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c2e4"></use></svg><svg class="u-svg-content" viewBox="0 0 60 60" x="0px" y="0px" id="svg-c2e4" style="enable-background:new 0 0 60 60;"><path d="M30,0.061c-16.542,0-30,13.458-30,30s13.458,29.879,30,29.879s30-13.337,30-29.879S46.542,0.061,30,0.061z M32,30.939
+	c0,1.104-0.896,2-2,2H14c-1.104,0-2-0.896-2-2s0.896-2,2-2h14v-22c0-1.104,0.896-2,2-2s2,0.896,2,2V30.939z"></path></svg></span>
+                  <p class="u-text u-text-1">
+                    <span class="u-text-palette-2-base">
+                      <span style="font-size: 1rem; font-weight: 700;" class="u-text-palette-2-dark-1">Date </span>:
+                    </span>
+                  </p>
+                  <p class="u-text u-text-default u-text-2">{{ post.share_date|date:"y/m/d"}}<br>
+                  </p>
+                  <h2 class="u-align-center u-text u-text-default u-text-3">{{ post.title }}<br>
+                  </h2>
+                  <p class="u-align-center u-text u-text-4">{{ post.caption }}</p>
+                  <a href="https://nicepage.com/website-mockup" class="u-border-2 u-border-hover-palette-3-base u-border-palette-1-base u-btn u-btn-round u-button-style u-none u-radius-50 u-btn-2"><span class="u-icon u-text-palette-2-base u-icon-3"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M376,30c-27.783,0-53.255,8.804-75.707,26.168c-21.525,16.647-35.856,37.85-44.293,53.268 c-8.437-15.419-22.768-36.621-44.293-53.268C189.255,38.804,163.783,30,136,30C58.468,30,0,93.417,0,177.514 c0,90.854,72.943,153.015,183.369,247.118c18.752,15.981,40.007,34.095,62.099,53.414C248.38,480.596,252.12,482,256,482 s7.62-1.404,10.532-3.953c22.094-19.322,43.348-37.435,62.111-53.425C439.057,330.529,512,268.368,512,177.514 C512,93.417,453.532,30,376,30z"></path></svg><img></span>
+                  </a>
+                  <p class="u-text u-text-default u-text-5">
+                    <span class="u-text-palette-2-base" style="font-size: 1.5rem;">Likes :&nbsp;</span>
+                    <span class="u-text-palette-2-base"></span>
+                  </p><span class="u-border-2 u-border-palette-1-base u-icon u-icon-circle u-text-palette-1-base u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 60 60" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8aa5"></use></svg><svg class="u-svg-content" viewBox="0 0 60 60" x="0px" y="0px" id="svg-8aa5" style="enable-background:new 0 0 60 60;"><path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M45.563,30.826l-22,15
+	C23.394,45.941,23.197,46,23,46c-0.16,0-0.321-0.038-0.467-0.116C22.205,45.711,22,45.371,22,45V15c0-0.371,0.205-0.711,0.533-0.884
+	c0.328-0.174,0.724-0.15,1.031,0.058l22,15C45.836,29.36,46,29.669,46,30S45.836,30.64,45.563,30.826z"></path></svg></span>
+                  <p class="u-text u-text-6">
+                    <span class="u-text-palette-2-base" style="font-size: 1.5rem;">View :&nbsp;{{ post.views }} </span>
+                    <span class="u-text-palette-2-base"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="u-align-center u-container-style u-image u-image-round u-layout-cell u-radius-46 u-right-cell u-size-30 u-size-xs-60 u-image-1" src="{{ post.data.url }}" data-image-width="1080" data-image-height="1080" data-animation-name="pulse" data-animation-duration="1000" data-animation-direction="">
+                <img class="u-container-layout u-valign-middle u-container-layout-2" src="{{ post.data.url }}" width="500" height="500">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
 {% endblock %}
 
-{% block main %}
-    <div class="mr-5 d-flex row">
-        <div class="Time col-3">
-            time
-        </div>
-        <div class="col-6">
-            posts
-        </div>
-        <div class="col-3">
-            item
-        </div>
-
-    </div>
-{% endblock %}
+</body></html>

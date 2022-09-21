@@ -12,13 +12,16 @@ from massage.models import Post
 
 
 def index(request):
-    # prof = Profile.objects.get(user=)
-    # post_number = Post.objects.filter(prof=prof).count()
+    if request.user.is_authenticated:
+        prof = Profile.objects.get(user=request.user)
+        post_number = Post.objects.filter(prof=prof).count()
+    posts = Post.objects.all().order_by("share_date")
 
-    # context = {
-    #     "post_num": post_number
-    # }
-    return render(request, "Accounts/index.html")
+    context = {
+        # "post_num": post_number,
+        "posts": posts
+    }
+    return render(request, "Accounts/index.html", context)
 #################################################
 
 
@@ -42,7 +45,7 @@ def Login(request):
         pass
     else:
         context = {}
-    return render(request, "Accounts/log_In.html", context)
+    return render(request, "Accounts/login.html", context)
 #################################################
 
 
@@ -126,7 +129,7 @@ def Myprofile(request, profile_id):
     context = {
         'prof': prof
     }
-    return render(request, 'Accounts/myProfile.html', context)
+    return render(request, 'Accounts/profile.html', context)
 
 #################################################
 

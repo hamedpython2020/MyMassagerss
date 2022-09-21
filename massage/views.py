@@ -47,12 +47,6 @@ def Post_view(request, post_id):
 ############################################
 
 
-def Post_list(request):
-    posts = Post.objects.all().order_by('share_date')
-    context = {
-        'posts': posts,
-    }
-    return render(request, 'massage/posts_list.html', context)
 
 ############################################
 
