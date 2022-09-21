@@ -13,19 +13,19 @@ from massage.models import Post
 
 def index(request):
     user = request.user
-    # if user.is_authenticated:
-    prof = Profile.objects.get(user=request.user)
-    post_number = Post.objects.filter(prof=prof).count()
-    posts = Post.objects.all().order_by("share_date")
-    context = {
-        "post_num": post_number,
-        "posts": posts
-    }
-    # else:
-    #     posts = Post.objects.all().order_by("share_date")
-    #     context = {
-    #         "posts": posts
-    #     }
+    if user.is_authenticated:
+        prof = Profile.objects.get(user=request.user)
+        post_number = Post.objects.filter(prof=prof).count()
+        posts = Post.objects.all().order_by("share_date")
+        context = {
+            "post_num": post_number,
+            "posts": posts
+        }
+    else:
+        posts = Post.objects.all().order_by("share_date")
+        context = {
+            "posts": posts
+        }
     return render(request, "Accounts/index.html", context)
 #################################################
 

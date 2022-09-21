@@ -87,13 +87,42 @@ def New_post(request):
 
 
 def Mypost(request):
-    post = Post.objects.filter(prof=request.user.profile)
-    count = post.count()
-    post_k = count // 3
-    post_b = post % 3
+    post = list(Post.objects.filter(prof=request.user.profile))
+    count = Post.objects.filter(prof=request.user.profile).count()
+    section = count // 3
+    g = []
+    l = []
+    n = []
+    for i in range(1, section + 2):
+        l = []
+        g = []
+        l.append(i)
+        for s in range(3):
+            if len(post) == 2:
+                g.append(post[0])
+                g.append(post[1])
+                break
+            elif len(post) == 1:
+                g.append(post[0])
+                break
+            g.append(post[s])
+            if s == 2:
+                break
+            pass
+        for s in range(3):
+            if len(post) == 0:
+                break
+            post.remove(post[0])
+        l.append(tuple(g))
+        n.append(tuple(l))
+        if len(post) == 0:
+            break
+        pass
+
     context = {
+        'base': n,
         "post": post,
-        "post_k": post_k+post_b
+        "section": section
     }
     return render(request, "massage/mypost.html", context)
 ############################################

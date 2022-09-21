@@ -1,13 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en">
+<html style="font-size: 16px;" lang="fa">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="​&nbsp;Tittle, ​&nbsp;Tittle, ​&nbsp;Tittle">
     <meta name="description" content="">
     <title>mypost</title>
-    <link rel="stylesheet" href="{% static "css/nicepage.css}" %}" media="screen">
-<link rel="stylesheet" href="{% static "css/mypost.css"%}" media="screen">
+    <link rel="stylesheet" href="{% static "css/nicepage.css" %}" media="screen">
+<link rel="stylesheet" href="{% static " " %}" media="screen">
     <script class="u-script" type="text/javascript" src="{% static "js/jquery.js"%}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{% static "js/nicepage.js"%}" defer=""></script>
     <meta name="generator" content="Nicepage 4.14.1, nicepage.com">
@@ -69,46 +70,30 @@
       </div><style class="u-sticky-style" data-style-id="582d">.u-sticky-fixed.u-sticky-582d, .u-body.u-sticky-fixed .u-sticky-582d {
 box-shadow: 2px -2px 8px 0 rgba(128,128,128,1) !important
 }</style></header>
+    {% for i,posts in base  %}
     <section class="u-border-2 u-border-grey-75 u-clearfix u-gradient u-section-1" id="sec-6654">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-22 u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
             <div class="u-layout-row">
+                {% for post in posts %}
               <div class="u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-1">
                 <div class="u-border-2 u-border-palette-1-base u-container-layout u-valign-middle u-container-layout-1">
-                  <img class="u-image u-image-round u-radius-29 u-image-1" src="{{ post.data}}" alt="" data-image-width="1024" data-image-height="256">
+                  <img class="u-image u-image-round u-radius-29 u-image-1" src="{{ post.data.url }}" alt="" data-image-width="724" data-image-height="256">
                   <h1 class="u-custom-font u-text u-text-default u-text-font u-text-1"><span class="u-icon u-text-palette-2-base u-icon-1"><svg class="u-svg-content" viewBox="0 0 53.867 53.867" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon style="fill:currentColor;" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-	10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "></polygon></svg><img></span>&nbsp;Tittle
+	10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "></polygon></svg><img></span>&nbsp;{{ post.title }}
                   </h1>
-                  <a href="{% url "massage:mypost" %}" class="u-border-none u-btn u-btn-round u-button-style u-hover-grey-15 u-palette-2-light-2 u-radius-12 u-text-hover-palette-2-base u-text-palette-1-base u-btn-1">See more&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
+                  <a href="{% url "massage:Post_view" post_id=post.id %}" class="u-border-none u-btn u-btn-round u-button-style u-hover-grey-15 u-palette-2-light-2 u-radius-12 u-text-hover-palette-2-base u-text-palette-1-base u-btn-1">See more&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
                   </a>
                 </div>
               </div>
-              <div class="u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-2">
-                <div class="u-container-layout u-valign-middle u-container-layout-2">
-                  <img class="u-image u-image-round u-radius-29 u-image-2" src="images/11.jpeg" alt="" data-image-width="1024" data-image-height="256">
-                  <h1 class="u-custom-font u-text u-text-default u-text-font u-text-2"><span class="u-icon u-text-palette-2-base u-icon-3"><svg class="u-svg-content" viewBox="0 0 53.867 53.867" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon style="fill:currentColor;" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-	10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "></polygon></svg><img></span>&nbsp;Tittle
-                  </h1>
-                  <a href="{% url "massage:mypost" %}" class="u-border-none u-btn u-btn-round u-button-style u-hover-grey-15 u-palette-2-light-2 u-radius-12 u-text-hover-palette-2-base u-text-palette-1-base u-btn-2">See more&nbsp;<span class="u-icon u-text-palette-2-base u-icon-4"><svg class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
-                  </a>
-                </div>
-              </div>
-              <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-3">
-                <div class="u-container-layout u-container-layout-3">
-                  <img class="u-image u-image-round u-radius-29 u-image-3" src="images/11.jpeg" alt="" data-image-width="1024" data-image-height="256">
-                  <h1 class="u-custom-font u-text u-text-default u-text-font u-text-3"><span class="u-icon u-text-palette-2-base u-icon-5"><svg class="u-svg-content" viewBox="0 0 53.867 53.867" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon style="fill:currentColor;" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-	10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "></polygon></svg><img></span>&nbsp;Tittle
-                  </h1>
-                  <a href="{% url "massage:mypost" %}" class="u-border-none u-btn u-btn-round u-button-style u-hover-grey-15 u-palette-2-light-2 u-radius-12 u-text-hover-palette-2-base u-text-palette-1-base u-btn-3">See more&nbsp;<span class="u-icon u-text-palette-2-base u-icon-6"><svg class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
-                  </a>
-                </div>
-              </div>
+                {% endfor %}
             </div>
           </div>
         </div>
       </div>
     </section>
+    {% endfor %}
     
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-a4f0"><div class="u-clearfix u-sheet u-sheet-1">
