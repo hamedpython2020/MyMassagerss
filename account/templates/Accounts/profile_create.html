@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="fa">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​&nbsp;MyMass​ager">
+    <meta name="description" content="">
+    <title>About us</title>
+    <link rel="stylesheet" href="{% static "account/css/nicepage2.css"%}" media="screen">
+    <link rel="stylesheet" href="{% static "account/css/About-us2.css"%}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static "account/js/jquery2.js"%}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static "account/js/nicepage2.js"%}" defer=""></script>
+    <meta name="generator" content="Nicepage 4.14.1, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="About us">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-7ab0">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-text u-text-default u-text-1">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="{% url "index" %}"><span class="u-file-icon u-icon u-icon-1"><img src="{% static "account/images/733585.png" %}" alt=""></span>&nbsp;MyMass​ager
+          </a>
+        </h1>
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+              <div class="menu-collapse">
+                <a class="u-button-style u-nav-link" href="#">
+                  <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-0590"></use></svg>
+                      <svg class="u-svg-content" version="1.1" id="svg-0590" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+                        </g>
+                      </svg>
+                </a>
+              </div>
+              <div class="u-custom-menu u-nav-container">
+                <ul class="u-nav u-unstyled">
+                    <li class="u-nav-item">
+                        <a class="u-button-style u-nav-link" href="#">About us</a>
+                    </li>
+                    <li class="u-nav-item">
+                        <a class="u-button-style u-nav-link" href="#">find friend</a>
+                    </li>
+                </ul>
+              </div>
+              <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">About us</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">find friend</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">new_post</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">my posts</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">logout</a>
+</li></ul>
+</div>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div>
+  </header>
+    <section class="u-clearfix u-section-1" id="sec-f1aa">
+      <div class="u-clearfix u-sheet u-sheet-1">
+      {% if prof.errors %}
+        <div class="u-container-style u-group u-palette-2-light-3 u-radius-50 u-shape-round u-group-1">
+          <div class="u-container-layout u-valign-middle u-container-layout-1">
+            <ul class="u-align-center u-custom-list u-file-icon u-text u-text-1">
+                 {% for er in prof.errors %}
+               <li>
+                 <div class="u-list-icon">
+                   <img src="{% static "account/images/149032.png" %}" alt="" style="font-size: 1.8em; margin: -1.8em;">
+                 </div>
+                   you have a error : {{ er }}
+               </li>
+                 {% endfor %}
+              </ul>
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+        <div class="u-border-2 u-border-black u-border-no-bottom u-border-no-top u-form u-palette-4-light-3 u-radius-26 u-form-1">
+          <form method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-6 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 24px;" redirect="true">
+              {% csrf_token %}
+            <div class="u-form-group u-form-name u-form-group-1">
+              <label for="name-8bd2" class="u-label u-label-1">first Name</label>
+              <input type="text" placeholder="Enter your first Name" id="name-8bd2" name="first_name" class="u-border-1 u-border-black u-gradient u-input u-input-rectangle u-radius-24 u-input-1" required="">
+            </div>
+            <div class="u-form-group u-form-name">
+              <label for="name-4b47" class="u-label u-label-2">last Name</label>
+              <input type="text" placeholder="Enter your last Name" id="name-4b47" name="last_name" class="u-border-1 u-border-black u-gradient u-input u-input-rectangle u-radius-24 u-input-2" required="">
+            </div>
+            <div class="u-form-email u-form-group">
+              <label for="email-4b47" class="u-label u-label-3">Email</label>
+              <input type="email" placeholder="Enter a valid email address" id="email-4b47" name="email" class="u-border-1 u-border-black u-gradient u-input u-input-rectangle u-radius-24 u-input-3" required="">
+            </div>
+            <div class="u-form-group u-form-phone u-form-group-4">
+              <label for="phone-3ecf" class="u-label u-label-4">{{ prof.Phone_number.label }} : </label>
+                <div type="text" id="phone-3ecf" class="u-border-1 u-border-black u-gradient u-input u-input-rectangle u-radius-24 u-input-4" required="">
+                    {{ prof.Phone_number }}
+                </div>
+            </div>
+            <div class="u-form-date u-form-group u-form-group-5">
+              <label for="date-ba80" class="u-label u-label-5">{{ prof.Birth_date.label }}</label>
+                <div id="date-ba80" class="u-border-1 u-border-black u-gradient u-input u-input-rectangle u-radius-24 u-input-5" required="">
+                    {{ prof.Birth_date }}
+                </div>
+            </div>
+            <div class="u-form-group u-form-select u-form-group-6">
+              <label for="select-47bc" class="u-label u-label-6">{{ prof.gender.label }}</label>
+              <div class="">
+                  {{ prof.gender }}
+              </div>
+            </div>
+            <div class="u-align-center u-form-group u-form-submit">
+              <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-gradient u-none u-radius-14 u-btn-1">Submit</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-9f7f"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+        <span>HTML Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.one" target="_blank">
+        <span>Website Builder</span>
+      </a>. 
+    </section>
+  
+</body>
+</html>

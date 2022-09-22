@@ -1,0 +1,35 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 501px;
+}
+
+.u-section-1 .u-form-1 {
+  height: 314px;
+  width: 570px;
+  background-image: none;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+  margin: 48px auto 60px;
+}
+
+.u-section-1 .u-input-1 {
+  background-image: linear-gradient(#fef9e6, #fbeced);
+}
+
+.u-section-1 .u-input-2 {
+  background-image: linear-gradient(#fef9e6, #fbeced);
+}
+
+.u-section-1 .u-input-3 {
+  background-image: linear-gradient(#fef9e6, #fbeced);
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+}

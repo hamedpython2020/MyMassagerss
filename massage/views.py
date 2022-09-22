@@ -71,8 +71,7 @@ def New_post(request):
             new_post = post.save(commit=False)
             new_post.prof = request.user.profile
             new_post.save()
-            return HttpResponseRedirect(reverse('massage:Post_view', kwargs={'post_id': new_post.pk}))
-
+            return HttpResponseRedirect(reverse(viewname="index"))
         context = {
             'post': post
         }
@@ -81,7 +80,7 @@ def New_post(request):
         context = {
             'post': post
         }
-    return render(request, 'massage/newpost.html', context)
+    return render(request, 'massage/new_post.html', context)
 
 ############################################
 

@@ -86,7 +86,7 @@ def Signup(request):
             # Just load the empty form
             user = Signup_form()
             context = {
-                'user': user
+                'use': user
             }
         return render(request, 'Accounts/signup.html', context)
     pass
@@ -96,33 +96,31 @@ def Signup(request):
 @login_required
 def Profilecreat(request):
     user = request.user
-    if user.profile is None:
-        if request.method == 'POST':
-            prof = profil_form(request.POST)
-            names = name(request.POST)
-            if prof.is_valid() and names.is_valid():
-                profile = prof.save(commit=False)
-                profile.user = request.user
-                profile.birth_date = prof.cleaned_data['Birth_date']
-                profile.save()
-                user.first_name = names.cleaned_data['first_name']
-                user.last_name = name.cleaned_data['last_name']
-                user.save()
-                return HttpResponseRedirect(reverse('index'))
-            context = {
-                'prof': prof,
-                'names': names
-            }
-        else:
-            prof = profil_form()
-            names = name()
-            context = {
-                'prof': prof,
-                'names': names
-            }
-        return render(request, 'Accounts/profile_creat.html', context)
+    if request.method == 'POST':
+        prof = profil_form(request.POST)
+        names = name(request.POST)
+        if prof.is_valid():
+            profile = prof.save(commit=False)
+            profile.user = request.user
+            profile.birth_date = prof.cleaned_data['Birth_date']
+            profile.save()
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.email = request.POST.get('email')
+            user.save()
+            return HttpResponseRedirect(reverse('index'))
+        context = {
+            'prof': prof,
+            'names': names
+        }
     else:
-        return HttpResponseRedirect(reverse(viewname='index'))
+        prof = profil_form()
+        names = name()
+        context = {
+            'prof': prof,
+            'names': names
+        }
+    return render(request, 'Accounts/profile_create.html', context)
 
 #################################################
 
