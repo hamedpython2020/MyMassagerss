@@ -71,7 +71,7 @@ def New_post(request):
             new_post = post.save(commit=False)
             new_post.prof = request.user.profile
             new_post.save()
-            return HttpResponseRedirect(reverse(viewname="index"))
+            return HttpResponseRedirect(reverse(viewname="massage:mypost"))
         context = {
             'post': post
         }
@@ -92,30 +92,32 @@ def Mypost(request):
     g = []
     l = []
     n = []
-    for i in range(1, section + 2):
-        l = []
-        g = []
-        l.append(i)
-        for s in range(3):
-            if len(post) == 2:
-                g.append(post[0])
-                g.append(post[1])
-                break
-            elif len(post) == 1:
-                g.append(post[0])
-                break
-            g.append(post[s])
-            if s == 2:
-                break
-            pass
-        for s in range(3):
+    if len(post)!=0:
+        for i in range(1, section + 2):
+            l = []
+            g = []
+            l.append(i)
+            for s in range(3):
+                if len(post) == 2:
+                    g.append(post[0])
+                    g.append(post[1])
+                    break
+                elif len(post) == 1:
+                    g.append(post[0])
+                    break
+                g.append(post[s])
+                if s == 2:
+                    break
+                pass
+            for s in range(3):
+                if len(post) == 0:
+                    break
+                post.remove(post[0])
+            l.append(tuple(g))
+            n.append(tuple(l))
             if len(post) == 0:
                 break
-            post.remove(post[0])
-        l.append(tuple(g))
-        n.append(tuple(l))
-        if len(post) == 0:
-            break
+            pass
         pass
 
     context = {

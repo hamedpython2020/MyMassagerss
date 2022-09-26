@@ -41,9 +41,12 @@
                 <li class="u-nav-item">
                     <a class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="#" style="padding: 10px 20px;">find friend</a>
                 </li>
+                <li class="u-nav-item">
+                    <a class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="{% url "massage:new_post" %}" style="padding: 10px 20px;">new post</a>
+                </li>
                 {% if user.is_authenticated %}
                 <li class="u-nav-item">
-                    <a class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" style="padding: 10px 20px;">profile</a>
+                    <a class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-button-style u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" style="padding: 10px 20px;" href="{% url "account:myprofile" profile_id=user.profile.id %}">profile</a>
                     <div class="u-nav-popup">
                         <ul class="u-border-1 u-border-grey-30 u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
                             <li class="u-nav-item">
@@ -103,9 +106,13 @@ box-shadow: 2px -2px 8px 0 rgba(128,128,128,1) !important
                 {% for post in posts %}
               <div class="u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-1">
                 <div class="u-border-2 u-border-palette-1-base u-container-layout u-valign-middle u-container-layout-1">
+                    {% if post.data %}
                   <img class="u-image u-image-round u-radius-29 u-image-1" src="{{ post.data.url }}" alt="" data-image-width="724" data-image-height="256">
-                  <h1 class="u-custom-font u-text u-text-default u-text-font u-text-1"><span class="u-icon u-text-palette-2-base u-icon-1"><svg class="u-svg-content" viewBox="0 0 53.867 53.867" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon style="fill:currentColor;" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-	10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "></polygon></svg><img></span>&nbsp;{{ post.title }}
+                    {% endif %}
+                  <h1 class="u-custom-font u-text u-text-default u-text-font u-text-1">
+                      <span class="u-icon u-text-palette-2-base u-icon-1">
+                          <svg class="u-svg-content" viewBox="0 0 53.867 53.867" x="0px" y="0px" style="width: 1em; height: 1em;">
+                              <polygon style="fill:currentColor;" points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "></polygon></svg><img></span>&nbsp;{{ post.title }}
                   </h1>
                   <a href="{% url "massage:Post_view" post_id=post.id %}" class="u-border-none u-btn u-btn-round u-button-style u-hover-grey-15 u-palette-2-light-2 u-radius-12 u-text-hover-palette-2-base u-text-palette-1-base u-btn-1">See more&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
                   </a>
