@@ -47,22 +47,6 @@ def Post_view(request, post_id):
 ############################################
 
 
-
-############################################
-
-
-def Post_data(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    data = post.data
-    context = {
-        'data': data,
-        'post': post
-    }
-    return render(request, 'massage/post_data.html', context)
-
-############################################
-
-
 @login_required
 def New_post(request):
     if request.method == 'POST':

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en">
+<html style="font-size: 16px;" lang="fa">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -103,19 +103,19 @@
             </div>
             <div class="u-form-email u-form-group u-label-top">
               <label for="email-3b9a" class="u-label">{{ post.data.label }}</label>
-                <div type="email" placeholder="Enter a valid email address" id="email-3b9a" name="email" class="u-border-2 u-border-palette-2-base u-gradient u-input u-input-rectangle u-radius-22 u-input-2" required="">
+                <div id="email-3b9a" class="u-border-2 u-border-palette-2-base u-gradient u-input u-input-rectangle u-radius-22 u-input-2" required="">
                     {{ post.data }}
                     {{ post.data.errors }}
                 </div>
             </div>
             <div class="u-form-group u-form-message u-label-top">
               <label for="message-3b9a" class="u-label">{{ post.caption.label }}</label>
-              <div placeholder="Enter your discribtion" rows="4" cols="50" id="message-3b9a" name="caption" class="u-border-2 u-border-palette-2-base u-gradient u-input u-input-rectangle u-radius-22 u-input-3" required="">
+              <div class="u-border-2 u-border-palette-2-base u-gradient u-input u-input-rectangle u-radius-22 u-input-3" >
                    {{ post.caption }}
               </div>
             </div>
             <div class="u-align-center u-form-group u-form-submit u-label-top">
-              <button type="submit" href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-14">Submit</button>
+              <button type="submit" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-14">Submit</button>
 {#              <input type="submit" value="submit" class="u-form-control-hidden">#}
             </div>
           </form>
